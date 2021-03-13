@@ -8,5 +8,6 @@ namespace Stacks
 {
     public class Stack
     {
+        Stack<int> stack = new Stack<int>();
     }
 }
