@@ -316,7 +316,7 @@ namespace LinkedList
 
 
         /// <summary>
-        /// Not completed
+        /// Checks if list is a palidrome
         /// </summary>
         /// <returns></returns>
         public bool checkPalindrome()

@@ -4,18 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace LinkedList
+namespace Stacks
 {
     class Program
     {
         static void Main(string[] args)
         {
-            LinkedList linkedList = new LinkedList();
-            linkedList.insertAtBeginning(1);
-            linkedList.insertAtEnd(2);
-
-
         }
     }
 }
