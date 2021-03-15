@@ -27,6 +27,13 @@ namespace BinaryTree
 
            
             binaryTree.Print();
+
+            //Level order traversal
+
+            //binaryTree.levelOrderTraversal(node0);
+
+            binaryTree.deleteNode(node0, 40);
+            binaryTree.Print();
             Console.ReadKey();
         }
     }
