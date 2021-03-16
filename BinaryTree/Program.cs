@@ -34,6 +34,14 @@ namespace BinaryTree
 
             binaryTree.deleteNode(node0, 40);
             binaryTree.Print();
+            Console.WriteLine("\nSize: " + binaryTree.getSize(node0));
+            Console.WriteLine("\nRight view of tree\n");
+            binaryTree.rightView(node0);
+            Console.WriteLine("\nLeft view of tree\n");
+            binaryTree.leftView(node0);
+            
+            Console.WriteLine("\nMaximum Item is: " + binaryTree.findMaxNode(node0));
+            
             Console.ReadKey();
         }
     }

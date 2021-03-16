@@ -82,10 +82,7 @@ namespace BinaryTree
         }
 
 
-        //public Node Root { get { return root; } }
-
-        
-
+       
         /// <summary>
         /// Prints the tree
         /// </summary>
@@ -158,6 +155,14 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// Delete node in a binary tree
+        /// Traverse till end and store
+        /// node to delete and last node
+        /// </summary>
+        /// <param name="head"></param>
+        /// <param name="data"></param>
+
         public void deleteNode(Node head, int data)
         {
             if (head == null)
@@ -189,8 +194,11 @@ namespace BinaryTree
                     queue.Enqueue(temp.right);
                 }
             }
-
-            if(keyNode != null)
+            /*
+             * Replace the node to be deleted's data with data of last node
+             */
+            
+            if (keyNode != null)
             {
                 int x = temp.data;
                 deleteDeepest(temp);
@@ -198,6 +206,10 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// Delete deepest node of a tree
+        /// </summary>
+        /// <param name="delNode"></param>
         public void deleteDeepest(Node delNode)
         {
             Node temp = root;
@@ -237,6 +249,117 @@ namespace BinaryTree
                 }
             }
         }
+        /// <summary>
+        /// Get size of tree
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
+        public int getSize(Node head)
+        {
+            if(head == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return (getSize(head.left) + 1 + getSize(head.right));
+            }
+        }
+
+        /// <summary>
+        /// Printing the last node at every level
+        /// </summary>
+        /// <param name="head"></param>
+        public void rightView(Node head)
+        {
+            if(head == null)
+            {
+                return;
+            }
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(head);
+
+            while(queue.Count != 0)
+            {
+                int n = queue.Count;
+                for(int i=1; i <= n; i++)
+                {
+                    Node temp = queue.Dequeue();
+                    if(i == n)
+                    {
+                        Console.Write(temp.data + " ");
+                    }
+
+                   
+                    if(temp.left != null)
+                    {
+                        queue.Enqueue(temp.left);
+                    }
+                    if(temp.right != null)
+                    {
+                        queue.Enqueue(temp.right);
+                    }
+                }
+            }            
+        }
+
+        public void leftView(Node head)
+        {
+            if (head == null)
+            {
+                return;
+            }
+            Queue<Node> queue = new Queue<Node>();
+            queue.Enqueue(head);
+
+            while (queue.Count != 0)
+            {
+                int n = queue.Count;
+                for (int i = 1; i <= n; i++)
+                {
+                    Node temp = queue.Dequeue();
+                    if (i == 1)
+                    {
+                        Console.Write(temp.data + " ");
+                    }
+
+                   
+                    if (temp.left != null)
+                    {
+                        queue.Enqueue(temp.left);
+                    }
+                    if (temp.right != null)
+                    {
+                        queue.Enqueue(temp.right);
+                    }
+                }
+            }
+        }
+
+        public int findMaxNode(Node head)
+        {
+            if (head == null)
+                return 0;
+
+            int result = head.data;
+            int leftMax = findMaxNode(head.left);
+            int rightMax = findMaxNode(head.right);
+            return Math.Max(result, Math.Max(leftMax, rightMax));
+        }
+
+        public int findMinNode(Node head)
+        {
+            if(head == null)
+            {
+                return 0;
+            }
+            int result = head.data;
+            int leftMin = findMinNode(head.left);
+            int rightMin = findMinNode(head.right);
+            return Math.Min(result, Math.Min(leftMin, rightMin));
+        }
+        
+        
 
     }
 
