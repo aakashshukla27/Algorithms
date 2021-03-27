@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6DFFA6C5-FBA4-4DFF-8AC1-06389247E8E5}</ProjectGuid>
+    <ProjectGuid>{1D1691AA-424C-483C-9233-FECF33F0AE6C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BinaryTree</RootNamespace>
-    <AssemblyName>BinaryTree</AssemblyName>
+    <RootNamespace>BinarySearchTree</RootNamespace>
+    <AssemblyName>BinarySearchTree</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,8 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryTree.cs" />
-    <Compile Include="BinaryTreeArray.cs" />
+    <Compile Include="BinarySearchTree.cs" />
     <Compile Include="BTreePrinter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

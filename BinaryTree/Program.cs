@@ -41,7 +41,13 @@ namespace BinaryTree
             binaryTree.leftView(node0);
             
             Console.WriteLine("\nMaximum Item is: " + binaryTree.findMaxNode(node0));
-            
+            binaryTree.printAncestors(node0, 60);
+            Console.WriteLine("\nHeight of tree");
+            Console.WriteLine(binaryTree.findHeight(node0));
+
+            binaryTree.topView(node0);
+
+
             Console.ReadKey();
         }
     }

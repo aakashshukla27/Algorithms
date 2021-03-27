@@ -114,7 +114,6 @@ namespace BinaryTree
                     queue.Enqueue(temp.right);
                 }
             }
-
         }
 
         /// <summary>
@@ -303,6 +302,12 @@ namespace BinaryTree
             }            
         }
 
+
+        /// <summary>
+        /// Left View of Binary Tree
+        /// </summary>
+        /// <param name="head"></param>
+
         public void leftView(Node head)
         {
             if (head == null)
@@ -336,6 +341,11 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// Find maximum node in binary tree
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public int findMaxNode(Node head)
         {
             if (head == null)
@@ -347,6 +357,11 @@ namespace BinaryTree
             return Math.Max(result, Math.Max(leftMax, rightMax));
         }
 
+        /// <summary>
+        /// Find minimum node in binary tree
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
         public int findMinNode(Node head)
         {
             if(head == null)
@@ -358,8 +373,139 @@ namespace BinaryTree
             int rightMin = findMinNode(head.right);
             return Math.Min(result, Math.Min(leftMin, rightMin));
         }
+
+        //Inorder traversal without recursion
+        public void inorderTraversalWithoutRecursion(Node head)
+        {
+            if(head == null)
+            {
+                return;
+            }
+
+            Stack<Node> s = new Stack<Node>();
+            Node current = head;
+
+            while (current != null || s.Count > 0)
+            {
+                while (current != null)
+                {
+                    s.Push(current);
+                    current = current.left;
+                }
+
+
+                current = s.Pop();
+
+                Console.Write(current.data + " ");
+
+                current = current.right;
+            }
+        }
+
+        /// <summary>
+        /// Print ancestors of given target value
+        /// </summary>
+        /// <param name="head"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public bool printAncestors(Node head, int target)
+        {
+            if(head == null)
+            {
+                return false;
+            }
+            if(head.data == target)
+            {
+                return true;
+            }
+
+            if(printAncestors(head.left, target) || printAncestors(head.right, target))
+            {
+                Console.Write(head.data + " ");
+                return true;
+            }
+
+            
+            return false;
+        }
         
-        
+        /// <summary>
+        /// Recursive method to find height of binary tree
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
+        public int findHeight(Node head)
+        {
+            if(head == null)
+            {
+                return 0;
+            }
+            
+            int leftMax = findHeight(head.left);
+            int rightMax = findHeight(head.right);
+
+            leftMax += 1;
+            rightMax += 1;
+
+            return Math.Max(leftMax, rightMax);
+
+        }
+
+
+        /// <summary>
+        /// Class used for printing top view
+        /// </summary>
+        public class QueueNode
+        {
+            public Node node;
+            public int level;
+            public QueueNode(Node node, int level)
+            {
+                this.node = node;
+                this.level = level;
+            }
+        }
+
+
+        /// <summary>
+        /// printing top view of binary tree
+        /// </summary>
+        /// <param name="head"></param>
+        public void topView(Node head)
+        {
+            Queue<QueueNode> queue = new Queue<QueueNode>();
+            SortedDictionary<int, int> map = new SortedDictionary<int, int>();
+            queue.Enqueue(new QueueNode(head, 0));
+            while (queue.Count > 0)
+            {
+                
+                QueueNode r = queue.Dequeue();
+
+                if (!map.ContainsKey(r.level))
+                {
+                    map.Add(r.level, r.node.data);
+                }
+
+                
+                if (r.node.left != null)
+                {
+                    queue.Enqueue(new QueueNode(r.node.left, r.level - 1));
+                }
+                if (r.node.right != null)
+                {
+                    queue.Enqueue(new QueueNode(r.node.right, r.level + 1));
+                }
+            }
+
+            foreach(int value in map.Values)
+            {
+                Console.WriteLine(value + " ");
+            }
+
+
+        }
+
+       
 
     }
 
