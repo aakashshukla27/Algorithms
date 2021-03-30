@@ -40,6 +40,14 @@ namespace BinarySearchTree
             root.Print();
         }
 
+
+        #region Search for key
+        /// <summary>
+        /// Searching node in binary search tree
+        /// </summary>
+        /// <param name="head"> root of tree </param>
+        /// <param name="key"> data to search for </param>
+        /// <returns> Node corresponding to </returns>
         private Node search(Node head, int key)
         {
             if(head == null || head.data == key)
@@ -61,6 +69,46 @@ namespace BinarySearchTree
         {
             return search(root, data);
         }
+
+        #endregion
+
+
+        #region insert new key
+
+        /// <summary>
+        /// Recursive function to insert node into tree
+        /// </summary>
+        /// <param name="data"></param>
+
+
+        public void insert(int data)
+        {
+            insertNode(root, data);
+        }
+
+        private Node insertNode(Node head, int data)
+        {
+            if(head == null)
+            {
+                head = new Node(data);
+                return head;
+            }
+            if(head.data > data)
+            {
+                return insertNode(head.left, data);
+            }
+            else
+            {
+                return insertNode(head.right, data);
+            }
+        }
+
+
+        #endregion
+
+
+
+
 
 
         #region Create Binary Search Tree from preorder traversal

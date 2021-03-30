@@ -15,7 +15,7 @@ namespace LinkedList
             linkedList.insertAtBeginning(1);
             linkedList.insertAtEnd(2);
 
-
+            
         }
     }
 }

@@ -15,13 +15,13 @@ namespace BinarySearchTree
             BinarySearchTree bst = new BinarySearchTree();
 
             int[] num = new int[50];
-
+            //int[] num = { 10, 5, 1, 7, 40, 50, };
             for (int i = 0; i < num.Length; i++)
             {
                 num[i] = generateRandom();
             }
 
-            
+
             for (int i = 0; i < num.Length; i++)
             {
                 bst.create(num[i]);
